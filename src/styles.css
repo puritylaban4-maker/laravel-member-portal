@@ -169,10 +169,20 @@
   }
 }
 
-@utility wallet-glow {
-  box-shadow: 0 0 0 1px color-mix(in oklab, var(--primary) 38%, transparent),
-    0 0 24px color-mix(in oklab, var(--primary) 22%, transparent),
-    inset 0 0 36px color-mix(in oklab, var(--primary) 9%, transparent);
+@utility tactile-card {
+  box-shadow: inset 0 1px 0 color-mix(in oklab, var(--foreground) 14%, transparent),
+    inset 0 -2px 0 color-mix(in oklab, var(--background) 60%, transparent),
+    0 5px 0 color-mix(in oklab, var(--background) 70%, transparent),
+    0 12px 24px -10px color-mix(in oklab, var(--background) 95%, transparent);
+  transition: box-shadow 180ms ease, translate 180ms ease;
+  &:is(button):hover {
+    translate: 0 -2px;
+    box-shadow: inset 0 1px 0 color-mix(in oklab, var(--foreground) 20%, transparent),
+      inset 0 -2px 0 color-mix(in oklab, var(--background) 55%, transparent),
+      0 7px 0 color-mix(in oklab, var(--background) 70%, transparent),
+      0 16px 26px -10px color-mix(in oklab, var(--background) 95%, transparent);
+  }
+  &:is(button):active { translate: 0 3px; box-shadow: inset 0 2px 5px color-mix(in oklab, var(--background) 70%, transparent); }
 }
 
 @keyframes payment-phone-pulse {
@@ -200,4 +210,5 @@
 
 @media (prefers-reduced-motion: reduce) {
   .payment-phone, .stat-enter, .progress-reveal { animation: none; }
+  .tactile-card { transition: none; }
 }
