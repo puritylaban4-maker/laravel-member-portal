@@ -168,3 +168,9 @@
     background: color-mix(in oklab, var(--primary) 25%, transparent);
   }
 }
+
+@utility wallet-glow {
+  box-shadow: 0 0 0 1px color-mix(in oklab, var(--primary) 38%, transparent),
+    0 0 24px color-mix(in oklab, var(--primary) 22%, transparent),
+    inset 0 0 36px color-mix(in oklab, var(--primary) 9%, transparent);
+}
