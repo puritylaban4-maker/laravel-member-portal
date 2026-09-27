@@ -127,8 +127,12 @@ function MemberDashboard() {
 
         <main className="space-y-3">
           <section ref={totalRef} aria-label="Total contributions" className="scroll-mt-5 py-5 sm:py-8">
-            <p className="text-sm font-medium text-muted-foreground sm:text-base">Total contributions</p>
-            <p className="mt-2 font-display text-4xl font-bold leading-tight tabular-nums text-foreground sm:text-5xl">KSh 7,800</p>
+            <p className="flex items-center gap-2.5 text-[10px] font-bold uppercase tracking-[0.22em] text-muted-foreground sm:text-xs">
+              <span aria-hidden="true" className="h-px w-7 bg-gradient-to-r from-primary to-warning" />
+              Total contributions
+            </p>
+            <p className="total-figure mt-2 font-display text-[2.75rem] font-bold leading-tight tabular-nums sm:text-6xl">KSh 7,800</p>
+            <div aria-hidden="true" className="mt-3 h-[3px] w-24 rounded-full bg-gradient-to-r from-primary via-warning to-transparent" />
           </section>
 
           <section className="grid grid-cols-3 gap-1.5 sm:gap-3">{stats.map((item) => <Stat key={item.label} {...item} />)}</section>
