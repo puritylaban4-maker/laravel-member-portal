@@ -198,6 +198,13 @@
 
 .payment-phone { animation: payment-phone-pulse 2.4s ease-in-out infinite; }
 
+@keyframes progress-reveal {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+.progress-reveal { transform-origin: left; animation: progress-reveal 650ms ease-out both; }
+
 @keyframes total-sheen {
   0%, 100% { background-position: 0% 0; }
   50% { background-position: 100% 0; }
