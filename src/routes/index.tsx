@@ -24,7 +24,7 @@ import {
   WalletCards,
   X,
 } from "lucide-react";
-import { useState, type ComponentType } from "react";
+import { useState, type ComponentType, type ReactNode } from "react";
 
 import logoAsset from "@/assets/khwwc-logo.png.asset.json";
 import { Button } from "@/components/ui/button";
@@ -187,7 +187,7 @@ function ActivityRow({ icon: Icon, tone, title, detail, amount, date }: { icon: 
   return <div className="grid grid-cols-[auto_1fr] gap-3 py-3 sm:grid-cols-[auto_1fr_auto] sm:items-center"><span className={cn("flex size-10 items-center justify-center rounded-full", colors[tone])}><Icon className="size-5" /></span><div className="min-w-0"><p className="truncate text-sm font-medium">{title}</p><p className="truncate text-[10px] text-muted-foreground sm:text-xs">{detail}</p></div><div className="col-start-2 flex items-center justify-between gap-3 text-[10px] sm:col-start-auto sm:block sm:text-right sm:text-xs">{amount && <p className={amount.startsWith("+") ? "font-semibold text-success" : "font-semibold text-warning"}>{amount}</p>}<p className="text-muted-foreground">{date}</p></div></div>;
 }
 
-function Popup({ title, onClose, children }: { title: string; onClose: () => void; children: React.ReactNode }) {
+function Popup({ title, onClose, children }: { title: string; onClose: () => void; children: ReactNode }) {
   return <div className="absolute right-0 top-12 w-[min(21rem,calc(100vw-2rem))] rounded-lg border border-border bg-popover p-4 shadow-2xl"><div className="mb-3 flex items-center justify-between"><p className="font-display font-bold">{title}</p><Button variant="ghost" size="icon" onClick={onClose} aria-label={`Close ${title}`}><X /></Button></div>{children}</div>;
 }
 
