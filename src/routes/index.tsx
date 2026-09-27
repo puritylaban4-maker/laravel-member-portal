@@ -6,7 +6,6 @@ import {
   Check,
   ChevronRight,
   CircleDollarSign,
-  Clock3,
   Eye,
   EyeOff,
   FileText,
@@ -95,14 +94,8 @@ function MemberDashboard() {
   const [panel, setPanel] = useState<"payment" | "statements" | "beneficiaries" | "documents" | "profile" | null>(null);
   const [amount, setAmount] = useState("300");
   const [phone, setPhone] = useState("");
-  const [message, setMessage] = useState("");
   const walletRef = useRef<HTMLElement>(null);
   const contributionsRef = useRef<HTMLElement>(null);
-  const activityRef = useRef<HTMLElement>(null);
-  const announce = (text: string) => {
-    setMessage(text);
-    window.setTimeout(() => setMessage(""), 2200);
-  };
   const selectNav = (label: string) => {
     setActive(label);
     if (label === "Home") window.scrollTo({ top: 0, behavior: "smooth" });
@@ -167,7 +160,7 @@ function MemberDashboard() {
             </div>
           </section>
 
-          <section ref={activityRef} className="scroll-mt-5 rounded-lg border border-border bg-card">
+          <section className="scroll-mt-5 rounded-lg border border-border bg-card">
             <div className="flex items-center justify-between px-4 py-3"><h2 className="font-display text-lg font-bold sm:text-xl">Recent Activity</h2><span className="text-xs text-muted-foreground">Latest updates</span></div>
             <div className="px-4 pb-2">{activity.map((item, index) => <Activity key={item.title} {...item} last={index === activity.length - 1} />)}</div>
           </section>
@@ -209,7 +202,6 @@ function MemberDashboard() {
            </> : <><DialogHeader className="text-left"><DialogTitle className="font-display text-xl">{panel === "statements" ? "Statements" : panel === "beneficiaries" ? "Beneficiaries" : panel === "documents" ? "Documents" : "My profile"}</DialogTitle><DialogDescription>This information will appear when your Laravel account data is connected. No records are available in this preview.</DialogDescription></DialogHeader><Button variant="outline" onClick={() => setPanel(null)}>Close</Button></>}
          </DialogContent>
        </Dialog>
-      {message && <div role="status" className="fixed bottom-20 left-1/2 z-50 -translate-x-1/2 rounded-md border border-primary/50 bg-panel px-4 py-2 text-xs shadow-xl">{message}</div>}
     </div>
   );
 }
