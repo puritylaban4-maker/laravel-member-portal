@@ -174,3 +174,30 @@
     0 0 24px color-mix(in oklab, var(--primary) 22%, transparent),
     inset 0 0 36px color-mix(in oklab, var(--primary) 9%, transparent);
 }
+
+@keyframes payment-phone-pulse {
+  50% { box-shadow: 0 0 20px color-mix(in oklab, var(--primary) 30%, transparent); transform: scale(1.04); }
+}
+
+.payment-phone { animation: payment-phone-pulse 2.4s ease-in-out infinite; }
+
+@keyframes stat-enter {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes progress-reveal {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+.stat-enter { animation: stat-enter 350ms ease-out both; }
+.stat-delay-0 { animation-delay: 0ms; }
+.stat-delay-1 { animation-delay: 80ms; }
+.stat-delay-2 { animation-delay: 160ms; }
+.stat-delay-3 { animation-delay: 240ms; }
+.progress-reveal { transform-origin: left; animation: progress-reveal 650ms ease-out both; }
+
+@media (prefers-reduced-motion: reduce) {
+  .payment-phone, .stat-enter, .progress-reveal { animation: none; }
+}
