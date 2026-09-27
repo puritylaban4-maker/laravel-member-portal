@@ -142,7 +142,7 @@ function MemberDashboard() {
             </div>
           </section>
 
-          <section className="grid grid-cols-4 gap-1.5 sm:gap-3">{stats.map((item) => <Stat key={item.label} {...item} />)}</section>
+          <section className="grid grid-cols-4 gap-1.5 sm:gap-3">{stats.map((item, index) => <Stat key={item.label} {...item} index={index} />)}</section>
 
           <section className="grid grid-cols-2 gap-2 sm:gap-3">
             <QuickAction icon={HandCoins} title="Make a Payment" detail="Pay via M-Pesa STK Push" primary onClick={() => setPanel("payment")} />
@@ -154,7 +154,7 @@ function MemberDashboard() {
               <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-primary/15 text-primary"><TrendingUp className="size-6" /></span>
               <div className="min-w-0 flex-1">
                 <div className="flex items-center justify-between gap-3"><h2 className="text-xs font-semibold sm:text-sm">Contribution Progress</h2><span className="text-[10px] text-muted-foreground sm:text-xs">8/12 months</span></div>
-                <div className="mt-2 h-2.5 overflow-hidden rounded-full bg-muted"><div className="h-full w-[81%] rounded-full bg-gradient-to-r from-primary to-warning" /></div>
+                 <div className="mt-2 h-2.5 overflow-hidden rounded-full bg-muted"><div className="progress-reveal h-full w-[81%] rounded-full bg-gradient-to-r from-primary to-warning" /></div>
                 <div className="mt-1.5 flex justify-between text-[10px] sm:text-xs"><span><strong className="text-warning">KSh 7,800</strong> / KSh 9,600</span><strong>81%</strong></div>
               </div>
             </div>
@@ -213,8 +213,8 @@ const toneClasses: Record<string, string> = {
   purple: "bg-chart-4/20 text-chart-4",
 };
 
-function Stat({ icon: Icon, tone, label, value, note }: { icon: IconType; tone: string; label: string; value: string; note: string }) {
-  return <article className="min-w-0 rounded-lg border border-border bg-card px-2 py-3 sm:p-4"><span className={cn("mb-2 flex size-8 items-center justify-center rounded-full sm:size-10", toneClasses[tone])}><Icon className="size-4 sm:size-5" /></span><p className="min-h-7 text-[8px] leading-tight text-muted-foreground sm:min-h-0 sm:text-xs">{label}</p><p className="mt-1 break-words font-display text-[11px] font-bold leading-tight sm:text-lg">{value}</p><p className={cn("mt-1 text-[7px] leading-tight sm:text-[11px]", tone === "green" ? "text-success" : tone === "amber" ? "text-warning" : "text-muted-foreground")}>{note}</p></article>;
+function Stat({ icon: Icon, tone, label, value, note, index }: { icon: IconType; tone: string; label: string; value: string; note: string; index: number }) {
+  return <article className={cn("stat-enter min-w-0 rounded-lg border border-border bg-card px-2 py-3 sm:p-4", ["stat-delay-0", "stat-delay-1", "stat-delay-2", "stat-delay-3"][index])}><span className={cn("mb-2 flex size-8 items-center justify-center rounded-full sm:size-10", toneClasses[tone])}><Icon className="size-4 sm:size-5" /></span><p className="min-h-7 text-[8px] leading-tight text-muted-foreground sm:min-h-0 sm:text-xs">{label}</p><p className="mt-1 break-words font-display text-[11px] font-bold leading-tight sm:text-lg">{value}</p><p className={cn("mt-1 text-[7px] leading-tight sm:text-[11px]", tone === "green" ? "text-success" : tone === "amber" ? "text-warning" : "text-muted-foreground")}>{note}</p></article>;
 }
 
 function QuickAction({ icon: Icon, title, detail, primary = false, onClick }: { icon: IconType; title: string; detail: string; primary?: boolean; onClick: () => void }) {

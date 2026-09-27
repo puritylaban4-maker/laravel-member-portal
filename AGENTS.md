@@ -13,3 +13,4 @@
 
 - Treat the Laravel backend contract and its existing role hierarchy as authoritative; this project modernizes presentation without redefining permissions or business flows.
 - Keep the dashboard UI data isolated as frontend display data until the canonical Laravel client files are supplied, preventing accidental contract invention.
+- Keep payment previews non-transactional until the Laravel payment contract is wired, so pending and verified states are never fabricated in the UI.
