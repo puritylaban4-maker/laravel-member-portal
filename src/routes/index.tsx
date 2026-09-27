@@ -131,7 +131,7 @@ function MemberDashboard() {
             <p className="mt-2 font-display text-4xl font-bold leading-tight tabular-nums text-foreground sm:text-5xl">KSh 7,800</p>
           </section>
 
-          <section className="grid grid-cols-3 gap-1.5 sm:gap-3">{stats.map((item, index) => <Stat key={item.label} {...item} index={index} />)}</section>
+          <section className="grid grid-cols-3 gap-1.5 sm:gap-3">{stats.map((item) => <Stat key={item.label} {...item} />)}</section>
 
           <section className="grid grid-cols-2 gap-2 sm:gap-3">
             <QuickAction icon={HandCoins} title="Make a Payment" detail="Pay via M-Pesa STK Push" primary onClick={() => setPanel("payment")} />
@@ -202,8 +202,8 @@ const toneClasses: Record<string, string> = {
   purple: "bg-chart-4/20 text-chart-4",
 };
 
-function Stat({ icon: Icon, tone, label, value, note, index }: { icon: IconType; tone: string; label: string; value: string; note: string; index: number }) {
-   return <article className={cn("tactile-card stat-enter min-w-0 rounded-lg border border-border bg-card px-2 py-3 sm:p-4", ["stat-delay-0", "stat-delay-1", "stat-delay-2"][index])}><span className={cn("mb-2 flex size-8 items-center justify-center rounded-full sm:size-10", toneClasses[tone])}><Icon className="size-4 sm:size-5" /></span><p className="min-h-7 text-[8px] leading-tight text-muted-foreground sm:min-h-0 sm:text-xs">{label}</p><p className="mt-1 break-words font-display text-[11px] font-bold leading-tight sm:text-lg">{value}</p><p className={cn("mt-1 text-[7px] leading-tight sm:text-[11px]", tone === "green" ? "text-success" : tone === "amber" ? "text-warning" : "text-muted-foreground")}>{note}</p></article>;
+ function Stat({ icon: Icon, tone, label, value, note }: { icon: IconType; tone: string; label: string; value: string; note: string }) {
+   return <article className="tactile-card min-w-0 rounded-lg border border-border bg-card px-2 py-3 sm:p-4"><span className={cn("mb-2 flex size-8 items-center justify-center rounded-full sm:size-10", toneClasses[tone])}><Icon className="size-4 sm:size-5" /></span><p className="min-h-7 text-[8px] leading-tight text-muted-foreground sm:min-h-0 sm:text-xs">{label}</p><p className="mt-1 break-words font-display text-[11px] font-bold leading-tight sm:text-lg">{value}</p><p className={cn("mt-1 text-[7px] leading-tight sm:text-[11px]", tone === "green" ? "text-success" : tone === "amber" ? "text-warning" : "text-muted-foreground")}>{note}</p></article>;
 }
 
 function QuickAction({ icon: Icon, title, detail, primary = false, onClick }: { icon: IconType; title: string; detail: string; primary?: boolean; onClick: () => void }) {
